@@ -1,3 +1,5 @@
+import requests
+
 class FieldMap:
     def __init__(self):
         self.map = {
@@ -18,6 +20,29 @@ class FieldMap:
             "rawOb": "raw",
             "clouds": "clouds"
         }
+
+class Weather:
+
+    def __init__(self):
+        self.api_base_url = "https://aviationweather.gov/api/data/metar?"
+
+    def get(self, icao):
+        url = self.api_base_url + f"ids={icao}" + "&format=json"
+        print("retrieving...")
+        response = requests.get(url)
+
+        if response.status_code != 200:
+            return None
+        
+        json_data = response.json()
+
+        if len(json_data) == 0:
+            return None
+        
+        metar = Metar()
+        metar.load_from_json(json_data[0])
+        
+        return metar
 
 class Metar:
     def __init__(self):
