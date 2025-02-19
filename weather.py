@@ -7,7 +7,7 @@ class Weather:
 
     def get(self, icao):
         url = self.api_base_url + f"ids={icao}" + "&format=json"
-        print(f"url: {url}")
+        print("retrieving...")
         response = requests.get(url)
 
         if response.status_code != 200:
