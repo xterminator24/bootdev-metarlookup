@@ -31,6 +31,12 @@ def print_airport_to_console(airport):
     print(f"wind: {airport.metar.wind_direction} at {airport.metar.wind_speed}")
     print(f"temperature: {airport.metar.temperature} | dewpoint: {airport.metar.dewpoint}")
     print(f"altimeter: {round(airport.metar.altimeter_hpa)} ({round(airport.metar.altimeter_inhg, 2)})")
+    if airport.metar.precipitation is not None:
+        print(f"precipitation: {airport.metar.precipitation}")
+    if airport.metar.snow is not None:
+        print(f"snow: {airport.metar.snow}")
+    print()
+    print(f"raw: {airport.metar.raw}")
     print()
     print()
 
