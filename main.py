@@ -1,17 +1,26 @@
+import os
+import platform
 from airport import Airport
 
 def prompt_for_icao():
-    airport_icao = input("ICAO: ")
+    airport_icao = input("Enter ICAO or \"exit\" to exit: ")
     return airport_icao.upper()
 
 def main():
-    airport_icao = prompt_for_icao()
-    airport = Airport(airport_icao)
+    clear_console()
+    while True:
+        airport_icao = prompt_for_icao()
 
-    if not airport:
-        print(f"failed to find airport {airport_icao}")
+        if airport_icao == "EXIT":
+            break
 
-    print_airport_to_console(airport)
+        airport = Airport(airport_icao)
+
+        if not airport.is_valid:
+            print(f"failed to find airport {airport_icao}")
+        else:
+            print_airport_to_console(airport)
+
 
 def print_airport_to_console(airport):
     print()
@@ -24,6 +33,12 @@ def print_airport_to_console(airport):
     print(f"altimeter: {round(airport.metar.altimeter_hpa)} ({round(airport.metar.altimeter_inhg, 2)})")
     print()
     print()
+
+def clear_console():
+    if platform.system() == "Windows":
+        os.system('cls')
+    else:
+        os.system('clear')
         
 
 if __name__ == "__main__":

@@ -45,6 +45,7 @@ class Airport:
         self.tower = None
         self.has_tower = None
         self.metar = None
+        self.is_valid = True
 
         # get airport info and load
         self.load()
@@ -67,6 +68,7 @@ class Airport:
         json_data = response.json()
 
         if len(json_data) == 0:
+            self.is_valid = False
             return None
         
         self.load_from_json(json_data[0])
