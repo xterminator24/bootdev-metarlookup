@@ -11,7 +11,11 @@ def main():
     if not airport:
         print(f"failed to find airport {airport_icao}")
         
-    print(airport)
+    print(f"{airport.name} ({airport.icao}) | {airport.country}")
+    print('=====================================')
+    print(f"wind: {airport.metar.wind_direction} at {airport.metar.wind_speed}")
+    print(f"temperature: {airport.metar.temperature} | dewpoint: {airport.metar.dewpoint}")
+    print(f"altimeter: {airport.metar.altimeter}")
         
 
 if __name__ == "__main__":
