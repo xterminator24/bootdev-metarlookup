@@ -1,4 +1,4 @@
-from metar import Weather, Metar
+from airport import Airport
 
 def prompt_for_icao():
     airport_icao = input("ICAO: ")
@@ -6,14 +6,12 @@ def prompt_for_icao():
 
 def main():
     airport_icao = prompt_for_icao()
-    weather = Weather()
-    metar = Metar()
-    metar = weather.get(airport_icao)
+    airport = Airport(airport_icao)
 
-    if not metar:
-        print(f"weather lookup failed for {airport_icao}")
+    if not airport:
+        print(f"failed to find airport {airport_icao}")
         
-    print(metar)
+    print(airport)
         
 
 if __name__ == "__main__":

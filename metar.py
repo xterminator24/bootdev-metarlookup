@@ -27,8 +27,8 @@ class Weather:
         self.api_base_url = "https://aviationweather.gov/api/data/metar?"
 
     def get(self, icao):
-        url = self.api_base_url + f"ids={icao}" + "&format=json"
-        print("retrieving...")
+        url = f"{self.api_base_url}ids={icao}&format=json"
+        print("retrieving weather...")
         response = requests.get(url)
 
         if response.status_code != 200:
@@ -64,7 +64,7 @@ class Metar:
         self.clouds = None
 
     def load_from_json(self, json):
-        print("loading...")
+        print("loading metar...")
         cleaned_json = self.remove_nulls_from_json(json)
         field_map = FieldMap()
         for k, v in cleaned_json.items():
