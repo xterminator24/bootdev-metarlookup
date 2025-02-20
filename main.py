@@ -21,7 +21,7 @@ def print_airport_to_console(airport):
     print('=========================================================')
     print(f"wind: {airport.metar.wind_direction} at {airport.metar.wind_speed}")
     print(f"temperature: {airport.metar.temperature} | dewpoint: {airport.metar.dewpoint}")
-    print(f"altimeter: {airport.metar.altimeter}")
+    print(f"altimeter: {round(airport.metar.altimeter_hpa)} ({round(airport.metar.altimeter_inhg, 2)})")
     print()
     print()
         

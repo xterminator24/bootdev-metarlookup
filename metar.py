@@ -41,6 +41,10 @@ class Weather:
         
         metar = Metar()
         metar.load_from_json(json_data[0])
+
+        # convert the altimeter
+        metar.altimeter_hpa = metar.altimeter
+        metar.altimeter_inhg = metar.altimeter * 0.02953
         
         return metar
 
@@ -57,6 +61,8 @@ class Metar:
         self.wind_speed = None
         self.visibility = None
         self.altimeter = None
+        self.altimeter_hpa = None
+        self.altimeter_inhg = None
         self.precipitation = None
         self.snow = None
         self.vertical_visibility = None

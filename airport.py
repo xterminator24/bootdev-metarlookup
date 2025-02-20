@@ -55,7 +55,6 @@ class Airport:
 
         self.has_beacon = self.beacon == "B"
         self.has_tower = self.tower == "T"
-        
 
     def load(self):
         url = f"https://aviationweather.gov/api/data/airport?ids={self.icao}&format=json"
