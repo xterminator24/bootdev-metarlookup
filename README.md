@@ -19,8 +19,8 @@ pip install requests
 pip list
 ```
 ## TODO
-- [ ] Convert altimeter to inHg when country is CA, US, or JP
-- [ ] Come up with a useful way to display the data. Initially on the console.
+- [x] Convert altimeter to inHg when country is CA, US, or JP (ended up just making both settings available in metar class properties)
 - [ ] Implement better error handling when entering an invalid ICAO
+- [ ] Come up with a useful way to display the data. Initially on the console.
 - [ ] Imlement a method of determining best runway to use based on wind direction
 - [ ] Implement a flight mode where you can select a Departure, Arrival, and Alternate airport and provide a weather briefing
